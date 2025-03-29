@@ -1,0 +1,11 @@
+spring:
+  application:
+    name: eurekaserver  # Nome da aplicação, usado para identificar este serviço no ecossistema Spring Cloud
+
+server:
+  port: 8761  # Porta em que o Eureka Server será iniciado (por convenção, usa-se 8761)
+
+eureka:
+  client:
+    register-with-eureka: false  # Indica que este servidor Eureka não deve se registrar em outro servidor Eureka
+    fetch-registry: false        # Indica que este servidor Eureka não deve buscar registros de outros servidores

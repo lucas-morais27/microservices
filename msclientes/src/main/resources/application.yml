@@ -1,0 +1,13 @@
+spring:
+  application:
+    name: msclientes  # Nome do microserviço que será registrado no Eureka Server
+
+server:
+  port: 0  # Define que a aplicação usará uma porta aleatória disponível no momento da execução
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka  # URL onde o Eureka Server está rodando; o serviço irá se registrar aqui
+  instance:
+    instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}  # Pode ser usado para definir um identificador único da instância no Eureka

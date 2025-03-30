@@ -1,0 +1,20 @@
+spring:
+  application:
+    name: mscloudgateway  # Nome da aplicação no Eureka e contexto geral do Spring
+
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true               # Ativa o roteamento automático via descoberta de serviços (Eureka)
+          lower-case-service-id: true # Converte o nome dos serviços para minúsculo (ex: msclientes)
+
+server:
+  port: 8080  # Porta em que o Gateway será iniciado. Geralmente fica na frente dos outros serviços.
+
+eureka:
+  client:
+    fetch-registry: true             # Habilita a busca de serviços registrados no Eureka
+    register-with-eureka: true       # Registra o próprio Gateway no Eureka
+    service-url:
+      defaultZone: http://localhost:8761/eureka  # URL do servidor Eureka

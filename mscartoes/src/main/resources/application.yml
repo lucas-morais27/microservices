@@ -1,0 +1,18 @@
+spring:
+  application:
+    name: mscartoes  # Nome do serviço no Eureka. Será usado para identificação e roteamento via Gateway.
+
+server:
+  port: 0  # Define que a porta será atribuída automaticamente (porta aleatória).
+  # Isso é útil para rodar várias instâncias do mesmo serviço no mesmo host.
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka  # URL do servidor Eureka onde o serviço irá se registrar.
+
+  instance:
+    instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}
+    # Define um ID único para a instância no Eureka.
+    # Usa o nome do serviço + um valor aleatório como fallback,
+    # útil quando há múltiplas instâncias para evitar conflitos de nome.
